@@ -1,0 +1,242 @@
+:root {
+  --app-bg: #f7f7f8;
+  --text: #0f0f0f;
+  --muted: rgba(0, 0, 0, 0.6);
+  --border: rgba(0, 0, 0, 0.08);
+  --sider-bg: #202123;
+  --sider-item: rgba(255, 255, 255, 0.08);
+  --sider-item-hover: rgba(255, 255, 255, 0.12);
+  --sider-text: rgba(255, 255, 255, 0.9);
+  --sider-muted: rgba(255, 255, 255, 0.65);
+  --bubble-user: #10a37f;
+  --bubble-assistant: #ffffff;
+
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    'Apple Color Emoji', 'Segoe UI Emoji';
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--app-bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--app-bg);
+}
+
+.chat-root {
+  height: 100vh;
+}
+
+/* ---- Left sidebar (sessions) ---- */
+.chat-sider {
+  background: var(--sider-bg) !important;
+  padding: 12px;
+}
+
+.chat-sider .ant-layout-sider-children {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sider-top {
+  margin-bottom: 12px;
+}
+
+.sider-list {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-sider .ant-list {
+  flex: 1;
+  overflow: auto;
+}
+
+.chat-sider .ant-list-item {
+  border-block-end: none !important;
+  padding: 10px 10px !important;
+  border-radius: 10px;
+  cursor: pointer;
+  color: var(--sider-text);
+}
+
+.chat-sider .ant-list-item:hover {
+  background: var(--sider-item-hover);
+}
+
+.session-item-active {
+  background: var(--sider-item) !important;
+}
+
+.session-main {
+  min-width: 0;
+}
+
+.session-title {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.session-sub {
+  display: flex;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--sider-muted);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.session-time {
+  flex: 0 0 auto;
+}
+
+.session-snippet {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sider-bottom {
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ---- Main chat ---- */
+.chat-content {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--app-bg);
+}
+
+.chat-topbar {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.chat-scroll {
+  flex: 1;
+  overflow: auto;
+}
+
+.chat-empty {
+  height: calc(100% - 120px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: 24px 16px;
+}
+
+.chat-composer {
+  border-top: 1px solid var(--border);
+  background: linear-gradient(
+    to top,
+    rgba(247, 247, 248, 1),
+    rgba(247, 247, 248, 0.85)
+  );
+}
+
+.composer-inner {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 12px 16px 10px;
+}
+
+.composer {
+  width: 100%;
+  display: flex !important;
+}
+
+.composer .ant-space-item:first-child {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.composer .ant-input-textarea {
+  border-radius: 14px;
+}
+
+.composer .ant-btn {
+  height: 40px;
+  border-radius: 12px;
+}
+
+.composer-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* ---- Messages ---- */
+.msg-list {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 18px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.msg-row {
+  display: flex;
+}
+
+.msg-row-user {
+  justify-content: flex-end;
+}
+
+.msg-row-assistant {
+  justify-content: flex-start;
+}
+
+.msg-bubble {
+  max-width: 72%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--border);
+}
+
+.msg-bubble-user {
+  background: var(--bubble-user);
+  color: #fff;
+  border-color: rgba(0, 0, 0, 0);
+}
+
+.msg-bubble-assistant {
+  background: var(--bubble-assistant);
+  color: var(--text);
+}
+
+.msg-text {
+  margin: 0 !important;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
